@@ -2,6 +2,7 @@ from data import registered_user
 from locators import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from urls import ACCOUNT_PROFILE_URL
 
 def test_personal_account(driver):
     WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)).click()
@@ -12,4 +13,4 @@ def test_personal_account(driver):
     WebDriverWait(driver, 5).until_not(expected_conditions.url_contains('/login'))
     WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)).click()
     WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(AccountPageLocators.LOGOUT_BUTTON))
-    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+    assert driver.current_url == ACCOUNT_PROFILE_URL
